@@ -38,7 +38,6 @@ keyFunc_mouseSpeedIncrease(){
     return
 }
 
-
 keyFunc_mouseSpeedDecrease(){
     global
     mouseSpeed-=1
@@ -51,18 +50,15 @@ keyFunc_mouseSpeedDecrease(){
     return
 }
 
-
 keyFunc_moveLeft(i:=1){
     SendInput, {left %i%}
     return
 }
 
-
 keyFunc_moveRight(i:=1){
     SendInput, {right %i%}
     Return
 }
-
 
 keyFunc_moveUp(i:=1){
     global
@@ -78,7 +74,6 @@ keyFunc_moveUp(i:=1){
     Return
 }
 
-
 keyFunc_moveDown(i:=1){
     global
     if(WinActive("ahk_id" . GuiHwnd))
@@ -93,24 +88,20 @@ keyFunc_moveDown(i:=1){
     Return
 }
 
-
 keyFunc_moveWordLeft(i:=1){
     SendInput,^{Left %i%}
     Return
 }
-
 
 keyFunc_moveWordRight(i:=1){
     SendInput,^{Right %i%}
     Return
 }
 
-
 keyFunc_backspace(){
     SendInput,{backspace}
     Return
 }
-
 
 keyFunc_delete(){
     SendInput,{delete}
@@ -128,13 +119,11 @@ keyFunc_deleteWord(){
     Return
 }
 
-
 keyFunc_forwardDeleteWord(){
     SendInput, +^{right}
     SendInput, {delete}
     Return
 }
-
 
 keyFunc_translate(){
     global
@@ -157,24 +146,20 @@ keyFunc_translate(){
     Return
 }
 
-
 keyFunc_end(){
     SendInput,{End}
     Return
 }
-
 
 keyFunc_home(){
     SendInput,{Home}
     Return
 }
 
-
 keyFunc_moveToPageBeginning(){
     SendInput, ^{Home}
     Return
 }
-
 
 keyFunc_moveToPageEnd(){
     SendInput, ^{End}
@@ -277,7 +262,6 @@ keyFunc_pageUp(){
     return
 }
 
-
 keyFunc_pageDown(){
     global
     if(WinActive("ahk_id" . GuiHwnd))
@@ -320,7 +304,6 @@ keyFunc_switchClipboard(){
     return
 }
 
-
 keyFunc_pasteSystem(){
     global
 
@@ -341,86 +324,82 @@ keyFunc_pasteSystem(){
     return
 }
 
-
 keyFunc_cut_1(){
     global
-    if(CLsets.global.allowClipboard="0")  ;禁用剪贴板功能
+    if(CLsets.global.allowClipboard="0") ;禁用剪贴板功能
     {
         CapsLock2:=""
-        return
-    }
-
-    ClipboardOld:=ClipboardAll
-    Clipboard:=""
-    SendInput, ^{x}
-    ClipWait, 0.1
-    if (ErrorLevel)
-    {
-        SendInput,{home}+{End}^{x}
-        ClipWait, 0.1
-    }
-    if (!ErrorLevel)
-    {
-        ;cClipboardAll:=ClipboardAll
-        clipSaver("c")
-        whichClipboardNow:=1
-    }
-    else
-    {
-        Clipboard:=ClipboardOld
-    }
-    Return
-}
-
-
-keyFunc_copy_1(){
-    global
-    if(CLsets.global.allowClipboard="0")  ;禁用剪贴板功能
-    {
-        CapsLock2:=""
-        return
-    }
-
-    ClipboardOld:=ClipboardAll
-    Clipboard:=""
-    SendInput, ^{insert}
-    ClipWait, 0.1
-    if (ErrorLevel)
-    {
-        SendInput,{home}+{End}^{insert}{End}
-        ClipWait, 0.1
-    }
-    if (!ErrorLevel)
-    {
-        ;  cClipboardAll:=ClipboardAll
-        clipSaver("c")
-        whichClipboardNow:=1
-    }
-    else
-    {
-        Clipboard:=ClipboardOld
-    }
     return
 }
 
+ClipboardOld:=ClipboardAll
+Clipboard:=""
+SendInput, ^{x}
+ClipWait, 0.1
+if (ErrorLevel)
+{
+    SendInput,{home}+{End}^{x}
+    ClipWait, 0.1
+}
+if (!ErrorLevel)
+{
+    ;cClipboardAll:=ClipboardAll
+    clipSaver("c")
+    whichClipboardNow:=1
+}
+else
+{
+    Clipboard:=ClipboardOld
+}
+Return
+}
+
+keyFunc_copy_1(){
+    global
+    if(CLsets.global.allowClipboard="0") ;禁用剪贴板功能
+    {
+        CapsLock2:=""
+    return
+}
+
+ClipboardOld:=ClipboardAll
+Clipboard:=""
+SendInput, ^{insert}
+ClipWait, 0.1
+if (ErrorLevel)
+{
+    SendInput,{home}+{End}^{insert}{End}
+    ClipWait, 0.1
+}
+if (!ErrorLevel)
+{
+    ;  cClipboardAll:=ClipboardAll
+    clipSaver("c")
+    whichClipboardNow:=1
+}
+else
+{
+    Clipboard:=ClipboardOld
+}
+return
+}
 
 keyFunc_paste_1(){
     global
-    if(CLsets.global.allowClipboard="0")  ;禁用剪贴板功能
+    if(CLsets.global.allowClipboard="0") ;禁用剪贴板功能
     {
         CapsLock2:=""
-        return
-    }
-
-    if (whichClipboardNow!=1)
-    {
-        Clipboard:=cClipboardAll
-        whichClipboardNow:=1
-    }
-    SendInput, ^{v}
-    Return
+    return
 }
 
+if (whichClipboardNow!=1)
+{
+    Clipboard:=cClipboardAll
+    whichClipboardNow:=1
+}
+SendInput, ^{v}
+Return
+}
 
 keyFunc_undoRedo(){
     global
@@ -437,86 +416,82 @@ keyFunc_undoRedo(){
     Return
 }
 
-
 keyFunc_cut_2(){
     global
-    if(CLsets.global.allowClipboard="0")  ;禁用剪贴板功能
+    if(CLsets.global.allowClipboard="0") ;禁用剪贴板功能
     {
         CapsLock2:=""
-        return
-    }
-
-    ClipboardOld:=ClipboardAll
-    Clipboard:=""
-    SendInput, ^{x}
-    ClipWait, 0.1
-    if (ErrorLevel)
-    {
-        SendInput,{home}+{End}^{x}
-        ClipWait, 0.1
-    }
-    if (!ErrorLevel)
-    {
-        ;  caClipboardAll:=ClipboardAll
-        clipSaver("ca")
-        whichClipboardNow:=2
-    }
-    else
-    {
-        Clipboard:=ClipboardOld
-    }
-    Return
-}
-
-
-keyFunc_copy_2(){
-    global
-    if(CLsets.global.allowClipboard="0")  ;禁用剪贴板功能
-    {
-        CapsLock2:=""
-        return
-    }
-
-    ClipboardOld:=ClipboardAll
-    Clipboard:=""
-    SendInput, ^{insert}
-    ClipWait, 0.1
-    if (ErrorLevel)
-    {
-        SendInput,{home}+{End}^{insert}{End}
-        ClipWait, 0.1
-    }
-    if (!ErrorLevel)
-    {
-        ;  caClipboardAll:=ClipboardAll
-        clipSaver("ca")
-        whichClipboardNow:=2
-    }
-    else
-    {
-        Clipboard:=ClipboardOld
-    }
     return
 }
 
+ClipboardOld:=ClipboardAll
+Clipboard:=""
+SendInput, ^{x}
+ClipWait, 0.1
+if (ErrorLevel)
+{
+    SendInput,{home}+{End}^{x}
+    ClipWait, 0.1
+}
+if (!ErrorLevel)
+{
+    ;  caClipboardAll:=ClipboardAll
+    clipSaver("ca")
+    whichClipboardNow:=2
+}
+else
+{
+    Clipboard:=ClipboardOld
+}
+Return
+}
+
+keyFunc_copy_2(){
+    global
+    if(CLsets.global.allowClipboard="0") ;禁用剪贴板功能
+    {
+        CapsLock2:=""
+    return
+}
+
+ClipboardOld:=ClipboardAll
+Clipboard:=""
+SendInput, ^{insert}
+ClipWait, 0.1
+if (ErrorLevel)
+{
+    SendInput,{home}+{End}^{insert}{End}
+    ClipWait, 0.1
+}
+if (!ErrorLevel)
+{
+    ;  caClipboardAll:=ClipboardAll
+    clipSaver("ca")
+    whichClipboardNow:=2
+}
+else
+{
+    Clipboard:=ClipboardOld
+}
+return
+}
 
 keyFunc_paste_2(){
     global
-    if(CLsets.global.allowClipboard="0")  ;禁用剪贴板功能
+    if(CLsets.global.allowClipboard="0") ;禁用剪贴板功能
     {
         CapsLock2:=""
-        return
-    }
-
-    if (whichClipboardNow!=2)
-    {
-        Clipboard:=caClipboardAll
-        whichClipboardNow:=2
-    }
-    SendInput, ^{v}
-    Return
+    return
 }
 
+if (whichClipboardNow!=2)
+{
+    Clipboard:=caClipboardAll
+    whichClipboardNow:=2
+}
+SendInput, ^{v}
+Return
+}
 
 keyFunc_qbar(){
     global
@@ -529,68 +504,58 @@ keyFunc_qbar(){
     return
 
     setCLqActive:
-    IfWinExist, ahk_id %GuiHwnd%
-    {
-        SetTimer, ,Off
-        WinActivate, ahk_id %GuiHwnd%
-    }
+        IfWinExist, ahk_id %GuiHwnd%
+        {
+            SetTimer, ,Off
+            WinActivate, ahk_id %GuiHwnd%
+        }
     return
 }
-
 
 keyFunc_tabPrve(){
     SendInput, ^+{tab}
     return
 }
 
-
 keyFunc_tabNext(){
     SendInput, ^{tab}
     return
 }
-
 
 keyFunc_jumpPageTop(){
     SendInput, ^{Home}
     return
 }
 
-
 keyFunc_jumpPageBottom(){
     SendInput, ^{End}
     return
 }
-
 
 keyFunc_selectUp(i:=1){
     SendInput, +{Up %i%}
     return
 }
 
-
 keyFunc_selectDown(i:=1){
     SendInput, +{Down %i%}
     return
 }
-
 
 keyFunc_selectLeft(i:=1){
     SendInput, +{Left %i%}
     return
 }
 
-
 keyFunc_selectRight(i:=1){
     SendInput, +{Right %i%}
     return
 }
 
-
 keyFunc_selectHome(){
     SendInput, +{Home}
     return
 }
-
 
 keyFunc_selectEnd(){
     SendInput, +{End}
@@ -602,12 +567,10 @@ keyFunc_selectToPageBeginning(){
     return
 }
 
-
 keyFunc_selectToPageEnd(){
     SendInput, +^{End}
     return
 }
-
 
 keyFunc_selectCurrentWord(){
     SendInput, ^{Left}
@@ -615,19 +578,16 @@ keyFunc_selectCurrentWord(){
     return
 }
 
-
 keyFunc_selectCurrentLine(){
     SendInput, {Home}
     SendInput, +{End}
     return
 }
 
-
 keyFunc_selectWordLeft(i:=1){
     SendInput, +^{Left %i%}
     return
 }
-
 
 keyFunc_selectWordRight(i:=1){
     SendInput, +^{Right %i%}
@@ -640,13 +600,10 @@ keyFunc_pageMoveLineUp(i:=1){
     return
 }
 
-
 keyFunc_pageMoveLineDown(i:=1){
     SendInput, ^{Down %i%}
     return
 }
-
-
 
 keyFunc_getJSEvalString(){
     global
@@ -670,12 +627,10 @@ keyFunc_getJSEvalString(){
     return
 }
 
-
 keyFunc_tabScript(){
     tabAction()
     Return
 }
-
 
 keyFunc_openCpasDocs(){
     if(isLangChinese())
@@ -687,42 +642,35 @@ keyFunc_openCpasDocs(){
     return
 }
 
-
 keyFunc_mediaPrev(){
     SendInput, {Media_Prev}
     return
 }
-
 
 keyFunc_mediaNext(){
     SendInput, {Media_Next}
     return
 }
 
-
 keyFunc_mediaPlayPause(){
     SendInput, {Media_Play_Pause}
     return
 }
-
 
 keyFunc_volumeUp(){
     SendInput, {Volume_Up}
     return
 }
 
-
 keyFunc_volumeDown(){
     SendInput, {Volume_Down}
     return
 }
 
-
 keyFunc_volumeMute(){
     SendInput, {Volume_Mute}
     return
 }
-
 
 keyFunc_reload(){
     MsgBox, , , reload, 0.5
@@ -741,31 +689,31 @@ keyFunc_qbar_upperFolderPath(){
     global
     if(!WinActive("ahk_id" . GuiHwnd))
     {
-        return
-    }
-    if(LVlistsType=0)
-    {
+    return
+}
+if(LVlistsType=0)
+{
 
-        return true
-    }
-    ControlGetText, editText, , ahk_id %editHwnd%
-    ;  if(historyIndex>1)
-    ;      historyIndex--
-
-    ;  _t:=qbarPathHistory[historyIndex+1]
-    ;  if(_t=editText)
-    ;  {
-    ;      editText:=qbarPathHistory[historyIndex]
-    ;  }
-    ;  else
-    ;      editText:=_t
-    qbarPathFuture.insert(editText)    ;记录路径历史
-    editText := RegExReplace(editText,"i)([^\\]*\\|[^\\]*)$")
-    ;  ifInsertHistory:=0  ;禁止记录地址
-    ifClearFuture:=0
-    ControlSetText, , %editText%, ahk_id %editHwnd%
-    sendinput, {end}
     return true
+}
+ControlGetText, editText, , ahk_id %editHwnd%
+;  if(historyIndex>1)
+;      historyIndex--
+
+;  _t:=qbarPathHistory[historyIndex+1]
+;  if(_t=editText)
+;  {
+;      editText:=qbarPathHistory[historyIndex]
+;  }
+;  else
+;      editText:=_t
+qbarPathFuture.insert(editText) ;记录路径历史
+editText := RegExReplace(editText,"i)([^\\]*\\|[^\\]*)$")
+;  ifInsertHistory:=0  ;禁止记录地址
+ifClearFuture:=0
+ControlSetText, , %editText%, ahk_id %editHwnd%
+sendinput, {end}
+return true
 }
 
 ;qbar中跳到下层文件路径
@@ -773,17 +721,17 @@ keyFunc_qbar_lowerFolderPath(){
     global
     if(!WinActive("ahk_id" . GuiHwnd))
     {
-        return
-    }
-    ;  ifInsertHistory:=0  ;禁止记录地址
-    editText:=qbarPathFuture.remove()
-    if(editText)
-    {
-        ifClearFuture:=0
-        ControlSetText, , %editText%, ahk_id %editHwnd%
-        sendinput, {end}
-    }
-    return true
+    return
+}
+;  ifInsertHistory:=0  ;禁止记录地址
+editText:=qbarPathFuture.remove()
+if(editText)
+{
+    ifClearFuture:=0
+    ControlSetText, , %editText%, ahk_id %editHwnd%
+    sendinput, {end}
+}
+return true
 }
 
 ;winbind-------------
@@ -793,7 +741,6 @@ keyFunc_winbind_activate(n){
     return
 }
 
-
 keyFunc_winbind_binding(n){
     global
     if(tapTimes[n]=="")
@@ -801,7 +748,6 @@ keyFunc_winbind_binding(n){
     tapTimes(n)
     return
 }
-
 
 keyFunc_winPin(){
     _id:=WinExist("A")
@@ -817,7 +763,6 @@ keyFunc_winPin(){
     ;  WinSet, Transparent, 210
     return
 }
-
 
 keyFunc_goCjkPage(){
     global
@@ -862,9 +807,7 @@ keyfunc_wheel_down(){
     Send, {Wheeldown 3}
 }
 
-
 ;keys functions end-------------
-
 
 ; 判断是否为连续点击，连续点击时指数增加移动速度
 ; init 初始单次移动距离
@@ -879,7 +822,6 @@ dynamic_speed(init:=10, a:=0.2, max:=80)
         N = 0
     return Min(Floor(init+Exp(N)), max)
 }
-
 
 ; testing area ---
 
@@ -913,4 +855,14 @@ keyFunc_unshiftWinMinimizeStack(){
 
 keyFunc_winTransparent(){
     winTransparent()
+}
+
+keyFunc_browserBack(){
+    SendInput, {Browser_Back}
+    return
+}
+
+keyFunc_browserForward(){
+    SendInput, {Browser_Forward}
+    return
 }

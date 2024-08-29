@@ -1,27 +1,25 @@
 ﻿;如果没有在set.ini设置按键的话，就按这里的默认设置执行
 keysInit:
-global keyset:=CLSets.Keys
+    global keyset:=CLSets.Keys
 
-
-if(!CLSets.global.default_hotkey_scheme)
-    ; "capslox" | “capslock-plus”
+    if(!CLSets.global.default_hotkey_scheme)
+        ; "capslox" | “capslock-plus”
     CLSets.global.default_hotkey_scheme:="capslox"
 
-if(CLSets.global.default_hotkey_scheme == "capslock_plus") {
-    keySchemeInit_capslockPlus()
-} else {
-    keySchemeInit_capslox()
-}
+    if(CLSets.global.default_hotkey_scheme == "capslock_plus") {
+        keySchemeInit_capslockPlus()
+    } else {
+        keySchemeInit_capslox()
+    }
 
 return
-
 
 keySchemeInit_capslox(){
     global
 
     if(!keyset.press_caps)
         keyset.press_caps:="keyFunc_toggleCapsLock"
-        ; keyset.press_caps:="keyFunc_esc"
+    ; keyset.press_caps:="keyFunc_esc"
 
     if(!keyset.caps_a)
         keyset.caps_a:="keyFunc_moveWordLeft"
@@ -153,7 +151,7 @@ keySchemeInit_capslox(){
         keyset.caps_f11:="keyFunc_doNothing"
     if(!keyset.caps_f12)
         keyset.caps_f12:="keyFunc_switchClipboard"
-        
+
     ; LAlt--------------------------------------------
 
     if(!keyset.caps_lalt_a)
@@ -189,7 +187,7 @@ keySchemeInit_capslox(){
     if(!keyset.caps_lalt_p)
         keyset.caps_lalt_p:="keyFunc_moveToPageBeginning"
     if(!keyset.caps_lalt_q)
-        keyset.caps_lalt_q:="keyFunc_doNothing"
+        keyset.caps_lalt_q:="keyFunc_browserBack"
     if(!keyset.caps_lalt_r)
         keyset.caps_lalt_r:="keyFunc_forwardDeleteWord"
     if(!keyset.caps_lalt_s)
@@ -207,8 +205,8 @@ keySchemeInit_capslox(){
     if(!keyset.caps_lalt_y)
         keyset.caps_lalt_y:="keyFunc_selectUp(30)"
     if(!keyset.caps_lalt_z)
-        keyset.caps_lalt_z:="keyFunc_doNothing"
-        
+        keyset.caps_lalt_z:="keyFunc_browserForward"
+
     if(!keyset.caps_lalt_backquote)
         keyset.caps_lalt_backquote:="keyFunc_doNothing"
     if(!keyset.caps_lalt_1)
@@ -261,7 +259,7 @@ keySchemeInit_capslox(){
         keyset.caps_lalt_space:="keyFunc_doNothing"
     if(!keyset.caps_lalt_ralt)
         keyset.caps_lalt_ralt:="keyFunc_doNothing"
-        
+
     ;--------------------window-------------------
     if(!keyset.caps_win_1)
         keyset.caps_win_1:="keyFunc_winbind_binding(1)"
@@ -283,18 +281,16 @@ keySchemeInit_capslox(){
         keyset.caps_win_9:="keyFunc_winbind_binding(9)"
     if(!keyset.caps_win_0)
         keyset.caps_win_0:="keyFunc_winbind_binding(10)"
-        
+
     ;--------------------other--------------------
-        
+
     if(!keyset.caps_lalt_wheelUp)
         keyset.caps_lalt_wheelUp:="keyFunc_mouseSpeedIncrease"
     if(!keyset.caps_lalt_wheelDown)
         keyset.caps_lalt_wheelDown:="keyFunc_mouseSpeedDecrease"
 
-    return
+return
 }
-
-
 
 ;----------------------------------------------------
 keySchemeInit_capslockPlus(){
@@ -433,7 +429,7 @@ keySchemeInit_capslockPlus(){
         keyset.caps_f11:="keyFunc_doNothing"
     if(!keyset.caps_f12)
         keyset.caps_f12:="keyFunc_switchClipboard"
-        
+
     ; LAlt--------------------------------------------
 
     if(!keyset.caps_lalt_a)
@@ -488,7 +484,7 @@ keySchemeInit_capslockPlus(){
         keyset.caps_lalt_y:="keyFunc_pageMoveLineUp(5)"
     if(!keyset.caps_lalt_z)
         keyset.caps_lalt_z:="keyFunc_putWinToBottom"
-        
+
     if(!keyset.caps_lalt_backquote)
         keyset.caps_lalt_backquote:="keyFunc_winbind_binding(9)"
     if(!keyset.caps_lalt_1)
@@ -541,17 +537,13 @@ keySchemeInit_capslockPlus(){
         keyset.caps_lalt_space:="keyFunc_doNothing"
     if(!keyset.caps_lalt_ralt)
         keyset.caps_lalt_ralt:="keyFunc_doNothing"
-        
 
-        
     ;--------------------other--------------------
-        
+
     if(!keyset.caps_lalt_wheelUp)
         keyset.caps_lalt_wheelUp:="keyFunc_mouseSpeedIncrease"
     if(!keyset.caps_lalt_wheelDown)
         keyset.caps_lalt_wheelDown:="keyFunc_mouseSpeedDecrease"
 
-
-
-    return
+return
 }
