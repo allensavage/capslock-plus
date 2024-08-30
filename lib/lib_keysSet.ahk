@@ -281,7 +281,14 @@ keySchemeInit_capslox(){
         keyset.caps_win_9:="keyFunc_winbind_binding(9)"
     if(!keyset.caps_win_0)
         keyset.caps_win_0:="keyFunc_winbind_binding(10)"
-
+    if(!keyset.caps_win_e)
+        keyset.caps_win_e:="keyFunc_lWinUp()"
+    if(!keyset.caps_win_d)
+        keyset.caps_win_d:="keyFunc_lWinDown()"
+    if(!keyset.caps_win_s)
+        keyset.caps_win_s:="keyFunc_lWinLeft()"
+    if(!keyset.caps_win_f)
+        keyset.caps_win_f:="keyFunc_lWinRight()"
     ;--------------------other--------------------
 
     if(!keyset.caps_lalt_wheelUp)

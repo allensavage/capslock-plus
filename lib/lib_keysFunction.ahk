@@ -866,3 +866,24 @@ keyFunc_browserForward(){
     SendInput, {Browser_Forward}
     return
 }
+
+; win function------
+keyFunc_lWinUp(){
+    SendInput, {LWin Down}{Up}{LWin Up}
+    return
+}
+
+keyFunc_lWinDown(){
+    SendInput, {LWin Down}{Down}{LWin Up}
+    return
+}
+
+keyFunc_lWinLeft(){
+    SendInput, {LWin Down}{Left}{LWin Up}
+    return
+}
+
+keyFunc_lWinRight(){
+    SendInput, {LWin Down}{Right}{LWin Up}
+    return
+}

@@ -75,6 +75,13 @@ Process Priority,,High
 start:
 
 ;-----------------START-----------------
+; add this line for stopping caplock+ when you switch to client machine while using caplock+ on both host and client hyper-v machine
+#IfWinNotActive, ahk_exe vmconnect.exe
+#IfWinNotActive, ahk_exe vmwp.exe
+#IfWinNotActive, ahk_exe vmms.exe
+#IfWinNotActive, ahk_exe vmcompute.exe
+#IfWinNotActive, ahk_exe mstsc.exe
+
 global ctrlZ, CapsLock2, CapsLock
 
 Capslock::
@@ -758,6 +765,30 @@ return
 #0::
 try
     runFunc(keyset.caps_win_0)
+Capslock2:=""
+return
+
+#s::
+try
+    runFunc(keyset.caps_win_s)
+Capslock2:=""
+return
+
+#f::
+try
+    runFunc(keyset.caps_win_f)
+Capslock2:=""
+return
+
+#e::
+try
+    runFunc(keyset.caps_win_e)
+Capslock2:=""
+return
+
+#d::
+try
+    runFunc(keyset.caps_win_d)
 Capslock2:=""
 return
 ;  #s::
